@@ -33,10 +33,11 @@ class ExamViewController: UIViewController {
     ]
     
     // Instance Data
-    var userResponses: [String] = []
+    var userResponses: [Int] = []
+    var userCorrectness: [Bool] = []
     var index : Int = 15
-    var incorrectResponseCount : Int = 0
-    var correctResponseCount : Int = 0
+    var incorrectResponseStreak : Int = 0
+    var correctResponseStreak : Int = 0
     var currentCorrectAngle : Int?
     var matchPoint : Bool = false
     
@@ -54,7 +55,7 @@ class ExamViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-
+        updateImage()
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,39 +63,76 @@ class ExamViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func downButtonPressed(_ sender: Any) {
+        userResponses.append(0)
+        checkResponse()
+    }
+    
+    
     @IBAction func leftButtonPressed(_ sender: Any) {
-        userResponses.append("left")
-        updateImage()
+        userResponses.append(1)
+        checkResponse()
     }
 
     @IBAction func upButtonPressed(_ sender: Any) {
-        userResponses.append("up")
-        updateImage()
+        userResponses.append(2)
+        checkResponse()
     }
 
-    @IBAction func downButtonPressed(_ sender: Any) {
-        userResponses.append("down")
-        updateImage()
-    }
-    
     @IBAction func rightButtonPressed(_ sender: Any) {
-        userResponses.append("right")
-        updateImage()
+        userResponses.append(3)
+        checkResponse()
     }
     
     @IBAction func unsureButtonPressed(_ sender: Any) {
-        userResponses.append("unsure")
+        userResponses.append(-1)
         updateImage()
     }
 
     func updateImage(){
-        landoltC.image = UIImage(named: "\(imageName)\(imageScales[index])-S.png")
-        var rotateScale = Int(arc4random_uniform(4))
-        while(rotateScale != nil && rotateScale == currentCorrectAngle){
-            rotateScale = Int(arc4random_uniform(4))
+        if(0 <= index && index < imageScales.count){
+            landoltC.image = UIImage(named: "\(imageName)\(imageScales[index])-S.png")
+            var rotateScale = Int(arc4random_uniform(4))
+            while(rotateScale != nil && rotateScale == currentCorrectAngle){
+                rotateScale = Int(arc4random_uniform(4))
+            }
+            print(rotateScale)
+            landoltC.transform = CGAffineTransform(rotationAngle: CGFloat(rotateScale)*CGFloat(M_PI)/2.0)
+            currentCorrectAngle = rotateScale
+        } else {
+            print("Index moved out of available range")
         }
-        print(rotateScale)
-        landoltC.transform = CGAffineTransform(rotationAngle: CGFloat(rotateScale)*CGFloat(M_PI)/2.0)
+    }
+    
+    func checkResponse(){
+        if(userResponses.last == currentCorrectAngle){
+            print("Correct")
+            incorrectResponseStreak = 0
+            correctResponseStreak += 1
+            if(!matchPoint){
+                index -= 1
+                updateImage()
+            } else {
+                if(correctResponseStreak >= 3){
+                    print("Completed Exam")
+                } else {
+                    updateImage()
+                }
+            }
+        } else {
+            print("Wrong")
+            correctResponseStreak = 0
+            incorrectResponseStreak += 1
+            if(incorrectResponseStreak >= 3){
+                matchPoint = true
+                index += 1
+                updateImage()
+            } else {
+                updateImage()
+            }
+            
+        }
+        updateImage()
     }
 
     /*
