@@ -9,6 +9,29 @@
 import UIKit
 
 class ExamViewController: UIViewController {
+    
+    //Exam Prescription Constants
+    var imageName: String = "Landolt_"
+    var imageScales: [String] = ["20" , "25", "30", "40", "50", "60", "70", "80", "90", "100", "120", "140", "180", "200", "240", "300"]
+    var prescriptionConversion: [String: String] = [
+        "20": "0.00",
+        "25": "-.50",
+        "30": "-0.75",
+        "40": "-1.00",
+        "50": "-1.25",
+        "60": "-1.50",
+        "70": "-1.75",
+        "80": "-2.00",
+        "90": "-2.25",
+        "100": "-2.50",
+        "120": "-2.75",
+        "140": "-3.00",
+        "180": "-3.25",
+        "200": "-3.50'",
+        "240": "-3.75",
+        "300": "-4.00"
+    ]
+    
     // Instance Data
     var userResponses: [String] = []
     
@@ -62,6 +85,7 @@ class ExamViewController: UIViewController {
 //        landoltC.transform.rotated(by: CGFloat.pi/2)
         
 //        landoltC.transform = CGAffineTransform(rotationAngle: CGFloat.pi/2)
+        
     }
 
     /*
