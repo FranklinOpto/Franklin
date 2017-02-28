@@ -34,6 +34,11 @@ class ExamViewController: UIViewController {
     
     // Instance Data
     var userResponses: [String] = []
+    var index : Int = 15
+    var incorrectResponseCount : Int = 0
+    var correctResponseCount : Int = 0
+    var currentCorrectAngle : Int?
+    var matchPoint : Bool = false
     
     // IB Outlets
     @IBOutlet weak var landoltC: UIImageView!
@@ -44,10 +49,12 @@ class ExamViewController: UIViewController {
     @IBOutlet weak var downButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
     @IBOutlet weak var unsureButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -81,11 +88,13 @@ class ExamViewController: UIViewController {
     }
 
     func updateImage(){
-//        landoltC.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-//        landoltC.transform.rotated(by: CGFloat.pi/2)
-        
-//        landoltC.transform = CGAffineTransform(rotationAngle: CGFloat.pi/2)
-        
+        landoltC.image = UIImage(named: "\(imageName)\(imageScales[index])-S.png")
+        var rotateScale = Int(arc4random_uniform(4))
+        while(rotateScale != nil && rotateScale == currentCorrectAngle){
+            rotateScale = Int(arc4random_uniform(4))
+        }
+        print(rotateScale)
+        landoltC.transform = CGAffineTransform(rotationAngle: CGFloat(rotateScale)*CGFloat(M_PI)/2.0)
     }
 
     /*
