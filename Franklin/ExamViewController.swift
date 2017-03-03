@@ -60,8 +60,8 @@ class ExamViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        buttonView.transform = CGAffineTransform(scaleX: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height)
-//        examView.transform = CGAffineTransform(scaleX: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height)
+
+        
         if(leftDone != true){
             buttonView.transform = CGAffineTransform(translationX: buttonView.frame.width + 7, y: 0)
             examView.transform = CGAffineTransform(translationX: -(examView.frame.width + 7), y: 0)
@@ -74,6 +74,7 @@ class ExamViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
     // MARK: - Button Events
     
