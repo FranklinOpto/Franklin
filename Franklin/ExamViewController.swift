@@ -57,6 +57,7 @@ class ExamViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var unsureButton: UIButton!
     @IBOutlet weak var examView: UIView!
     @IBOutlet weak var buttonView: UIView!
+    @IBOutlet weak var directionLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,25 +79,31 @@ class ExamViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         
         // Do any additional setup after loading the view.
+        directionLabel.text = ""
         updateImage()
     }
     func handleTaps(sender: UISwipeGestureRecognizer){
         self.unsureButtonPressed(Any)
+        directionLabelChange(message: "Unsure")
     }
     
     func handleSwipes(sender: UISwipeGestureRecognizer){
         if let swipeGesture = sender as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
             case UISwipeGestureRecognizerDirection.right:
+                directionLabelChange(message: "Right")
                 print("Swiped right")
                 self.rightButtonPressed(Any)
             case UISwipeGestureRecognizerDirection.down:
+                directionLabelChange(message: "Down")
                 print("Swiped down")
                 self.downButtonPressed(Any)
             case UISwipeGestureRecognizerDirection.left:
+                directionLabelChange(message: "Left")
                 print("Swiped left")
                 self.leftButtonPressed(Any)
             case UISwipeGestureRecognizerDirection.up:
+                directionLabelChange(message: "Up")
                 print("Swiped up")
                 self.upButtonPressed(Any)
             default:
@@ -136,6 +143,15 @@ class ExamViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBAction func unsureButtonPressed(_ sender: Any) {
         userResponses.append(-1)
         checkResponse()
+    }
+    
+    func directionLabelChange(message: String){
+        directionLabel.text = message
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.dismissLabel), userInfo: nil, repeats: false)
+    }
+    
+    func dismissLabel(){
+        directionLabel.text = ""
     }
     
     // MARK: - Exam Handling

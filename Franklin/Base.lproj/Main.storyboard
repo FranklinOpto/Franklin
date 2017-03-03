@@ -24,6 +24,15 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8M1-aB-gry">
                                 <rect key="frame" x="0.0" y="0.0" width="330" height="375"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t1B-0F-89d">
+                                        <rect key="frame" x="107" y="324" width="117" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Avenir-BookOblique" family="Avenir" pointSize="23"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                             </view>
@@ -45,6 +54,7 @@
                     <size key="freeformSize" width="667" height="375"/>
                     <connections>
                         <outlet property="buttonView" destination="8M1-aB-gry" id="twb-PA-goA"/>
+                        <outlet property="directionLabel" destination="t1B-0F-89d" id="ei3-c0-yK1"/>
                         <outlet property="examView" destination="Ua1-EE-MM1" id="m7f-Fx-R17"/>
                         <outlet property="landoltC" destination="peg-f3-Cu2" id="tnr-tw-UGC"/>
                         <segue destination="x0r-hZ-dAW" kind="presentation" identifier="performNextEye" id="uL2-h6-dSO"/>
