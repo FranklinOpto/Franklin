@@ -32,7 +32,7 @@ class ExamViewController: UIViewController {
         "120": "-2.75",
         "140": "-3.00",
         "180": "-3.25",
-        "200": "-3.50'",
+        "200": "-3.50",
         "240": "-3.75",
         "300": "-4.00"
     ]
@@ -55,10 +55,17 @@ class ExamViewController: UIViewController {
     @IBOutlet weak var downButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
     @IBOutlet weak var unsureButton: UIButton!
+    @IBOutlet weak var examView: UIView!
+    @IBOutlet weak var buttonView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        if(leftDone != true){
+            buttonView.transform = CGAffineTransform(translationX: buttonView.frame.width + 7, y: 0)
+            examView.transform = CGAffineTransform(translationX: -(examView.frame.width + 7), y: 0)
+        }
         // Do any additional setup after loading the view.
         updateImage()
     }
@@ -67,6 +74,7 @@ class ExamViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
     // MARK: - Button Events
     
