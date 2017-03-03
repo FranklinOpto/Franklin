@@ -85,6 +85,13 @@
                                             <action selector="downButtonPressed:" destination="Ypc-Ma-3OS" eventType="touchUpInside" id="77l-N0-ct4"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yy7-eR-dgY">
+                                        <rect key="frame" x="125" y="342" width="81" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Avenir-BookOblique" family="Avenir" pointSize="23"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -106,6 +113,7 @@
                     <size key="freeformSize" width="667" height="375"/>
                     <connections>
                         <outlet property="buttonView" destination="8M1-aB-gry" id="twb-PA-goA"/>
+                        <outlet property="directionLabel" destination="yy7-eR-dgY" id="XXU-Om-7CY"/>
                         <outlet property="downButton" destination="0GJ-xc-U4J" id="Egz-Ub-aeG"/>
                         <outlet property="examView" destination="Ua1-EE-MM1" id="m7f-Fx-R17"/>
                         <outlet property="landoltC" destination="peg-f3-Cu2" id="tnr-tw-UGC"/>
