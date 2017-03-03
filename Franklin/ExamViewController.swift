@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ExamViewController: UIViewController {
+class ExamViewController: UIViewController, UIGestureRecognizerDelegate {
     
     var rightDone: Bool?
     var leftDone: Bool?
@@ -66,8 +66,43 @@ class ExamViewController: UIViewController {
             buttonView.transform = CGAffineTransform(translationX: buttonView.frame.width + 7, y: 0)
             examView.transform = CGAffineTransform(translationX: -(examView.frame.width + 7), y: 0)
         }
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTaps))
+        tap.delegate = self
+        buttonView.addGestureRecognizer(tap)
+        let directions: [UISwipeGestureRecognizerDirection] = [.right, .left, .up, .down]
+        for direction in directions {
+            let userInputGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes))
+            userInputGesture.direction = direction
+            buttonView.addGestureRecognizer(userInputGesture)
+        }
+        
         // Do any additional setup after loading the view.
         updateImage()
+    }
+    func handleTaps(sender: UISwipeGestureRecognizer){
+        self.unsureButtonPressed(Any)
+    }
+    
+    func handleSwipes(sender: UISwipeGestureRecognizer){
+        if let swipeGesture = sender as? UISwipeGestureRecognizer {
+            switch swipeGesture.direction {
+            case UISwipeGestureRecognizerDirection.right:
+                print("Swiped right")
+                self.rightButtonPressed(Any)
+            case UISwipeGestureRecognizerDirection.down:
+                print("Swiped down")
+                self.downButtonPressed(Any)
+            case UISwipeGestureRecognizerDirection.left:
+                print("Swiped left")
+                self.leftButtonPressed(Any)
+            case UISwipeGestureRecognizerDirection.up:
+                print("Swiped up")
+                self.upButtonPressed(Any)
+            default:
+                break
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
