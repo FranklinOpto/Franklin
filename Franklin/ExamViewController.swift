@@ -55,10 +55,17 @@ class ExamViewController: UIViewController {
     @IBOutlet weak var downButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
     @IBOutlet weak var unsureButton: UIButton!
+    @IBOutlet weak var examView: UIView!
+    @IBOutlet weak var buttonView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+//        buttonView.transform = CGAffineTransform(scaleX: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height)
+//        examView.transform = CGAffineTransform(scaleX: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height)
+        if(leftDone != true){
+            buttonView.transform = CGAffineTransform(translationX: buttonView.frame.width + 7, y: 0)
+            examView.transform = CGAffineTransform(translationX: -(examView.frame.width + 7), y: 0)
+        }
         // Do any additional setup after loading the view.
         updateImage()
     }

@@ -21,19 +21,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ua1-EE-MM1">
-                                <rect key="frame" x="345" y="0.0" width="322" height="375"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="c" translatesAutoresizingMaskIntoConstraints="NO" id="peg-f3-Cu2">
-                                        <rect key="frame" x="91" y="118" width="140" height="138"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.46062736139999999" green="0.96468176839999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8M1-aB-gry">
-                                <rect key="frame" x="0.0" y="0.0" width="337" height="375"/>
+                                <rect key="frame" x="0.0" y="0.0" width="330" height="375"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ok9-CR-kXF">
@@ -52,14 +41,6 @@
                                             <action selector="downButtonPressed:" destination="Ypc-Ma-3OS" eventType="touchUpInside" id="77l-N0-ct4"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEL-6q-keE">
-                                        <rect key="frame" x="293" y="172" width="36" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Right"/>
-                                        <connections>
-                                            <action selector="rightButtonPressed:" destination="Ypc-Ma-3OS" eventType="touchUpInside" id="Eja-9X-YsO"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="jUK-LX-G2x">
                                         <rect key="frame" x="138" y="172" width="61" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -76,8 +57,27 @@
                                             <action selector="leftButtonPressed:" destination="Ypc-Ma-3OS" eventType="touchUpInside" id="ykv-BN-3I4"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEL-6q-keE">
+                                        <rect key="frame" x="285" y="172" width="36" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Right"/>
+                                        <connections>
+                                            <action selector="rightButtonPressed:" destination="Ypc-Ma-3OS" eventType="touchUpInside" id="Eja-9X-YsO"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ua1-EE-MM1">
+                                <rect key="frame" x="338" y="0.0" width="330" height="375"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="c" translatesAutoresizingMaskIntoConstraints="NO" id="peg-f3-Cu2">
+                                        <rect key="frame" x="91" y="118" width="140" height="138"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.46062736139999999" green="0.96468176839999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -85,7 +85,9 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="667" height="375"/>
                     <connections>
+                        <outlet property="buttonView" destination="8M1-aB-gry" id="twb-PA-goA"/>
                         <outlet property="downButton" destination="0GJ-xc-U4J" id="Egz-Ub-aeG"/>
+                        <outlet property="examView" destination="Ua1-EE-MM1" id="m7f-Fx-R17"/>
                         <outlet property="landoltC" destination="peg-f3-Cu2" id="tnr-tw-UGC"/>
                         <outlet property="leftButton" destination="Pnh-uY-REG" id="Qp6-kt-6gD"/>
                         <outlet property="rightButton" destination="dEL-6q-keE" id="3xX-OL-kzD"/>
