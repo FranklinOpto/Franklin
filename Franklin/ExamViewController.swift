@@ -8,11 +8,12 @@
 
 import UIKit
 
-class ExamViewController: UIViewController {
+class ExamViewController: UIViewController, UIGestureRecognizerDelegate {
     
     var rightDone: Bool?
     var leftDone: Bool?
     var prescription: [String] = [String]()
+    var inputType: String?
 //    var prescriptionToSend: [String] = [String]()
     
     // MARK: Exam Prescription Constants
@@ -57,15 +58,37 @@ class ExamViewController: UIViewController {
     @IBOutlet weak var unsureButton: UIButton!
     @IBOutlet weak var examView: UIView!
     @IBOutlet weak var buttonView: UIView!
+    @IBOutlet weak var directionLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if(inputType == "gesture"){
+            upButton.isHidden = true
+            downButton.isHidden = true
+            rightButton.isHidden = true
+            leftButton.isHidden = true
+            unsureButton.isHidden = true
+            
+            let tap = UITapGestureRecognizer(target: self, action: #selector(handleTaps))
+            tap.delegate = self
+            buttonView.addGestureRecognizer(tap)
+            let directions: [UISwipeGestureRecognizerDirection] = [.right, .left, .up, .down]
+            for direction in directions {
+                let userInputGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes))
+                userInputGesture.direction = direction
+                buttonView.addGestureRecognizer(userInputGesture)
+            }
+        } else if (inputType == "button"){
+            directionLabel.text = ""
+        }
         
         if(leftDone != true){
             buttonView.transform = CGAffineTransform(translationX: buttonView.frame.width + 7, y: 0)
             examView.transform = CGAffineTransform(translationX: -(examView.frame.width + 7), y: 0)
         }
+        
+        directionLabel.text = ""
         // Do any additional setup after loading the view.
         updateImage()
     }
@@ -75,30 +98,68 @@ class ExamViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func handleTaps(sender: UISwipeGestureRecognizer){
+        self.unsureButtonPressed(Any)
+    }
+    
+    func handleSwipes(sender: UISwipeGestureRecognizer){
+        if let swipeGesture = sender as? UISwipeGestureRecognizer {
+            switch swipeGesture.direction {
+            case UISwipeGestureRecognizerDirection.right:
+                print("Swiped right")
+                self.rightButtonPressed(Any)
+            case UISwipeGestureRecognizerDirection.down:
+                print("Swiped down")
+                self.downButtonPressed(Any)
+            case UISwipeGestureRecognizerDirection.left:
+                print("Swiped left")
+                self.leftButtonPressed(Any)
+            case UISwipeGestureRecognizerDirection.up:
+                print("Swiped up")
+                self.upButtonPressed(Any)
+            default:
+                break
+            }
+        }
+    }
+    
+    func directionLabelChange(message: String){
+        directionLabel.text = message
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.dismissLabel), userInfo: nil, repeats: false)
+    }
+    
+    func dismissLabel(){
+        directionLabel.text = ""
+    }
     
     // MARK: - Button Events
     
     @IBAction func downButtonPressed(_ sender: Any) {
+        directionLabelChange(message: "Down")
         userResponses.append(0)
         checkResponse()
     }
     
     @IBAction func leftButtonPressed(_ sender: Any) {
+        directionLabelChange(message: "Left")
         userResponses.append(1)
         checkResponse()
     }
 
     @IBAction func upButtonPressed(_ sender: Any) {
+        directionLabelChange(message: "Up")
         userResponses.append(2)
         checkResponse()
     }
 
     @IBAction func rightButtonPressed(_ sender: Any) {
+        directionLabelChange(message: "Right")
         userResponses.append(3)
         checkResponse()
     }
     
     @IBAction func unsureButtonPressed(_ sender: Any) {
+        directionLabelChange(message: "Unsure")
         userResponses.append(-1)
         checkResponse()
     }
@@ -117,6 +178,7 @@ class ExamViewController: UIViewController {
             currentCorrectAngle = rotateScale
         } else {
             print("Index moved out of available range")
+            index -= 1
         }
     }
     
@@ -174,6 +236,7 @@ class ExamViewController: UIViewController {
             let nextController: EyeCoverInstructionViewController = segue.destination as! EyeCoverInstructionViewController
             nextController.leftDone = true
             nextController.rightDone = self.rightDone
+            nextController.inputType = self.inputType
             nextController.prescription.append(prescriptionConversion[eyeValue]!)
         } else if(segue.identifier == "showPrescription") {
             let nextController: ResultsViewController = segue.destination as! ResultsViewController

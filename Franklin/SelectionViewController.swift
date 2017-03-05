@@ -1,28 +1,19 @@
 //
-//  ResultsViewController.swift
+//  SelectionViewController.swift
 //  Franklin
 //
-//  Created by Takashi Wickes on 2/28/17.
+//  Created by Takashi Wickes on 3/4/17.
 //  Copyright © 2017 Franklin. All rights reserved.
 //
 
 import UIKit
 
-class ResultsViewController: UIViewController {
-    
-    var prescription: [String] = [String]()
+class SelectionViewController: UIViewController {
 
-    @IBOutlet weak var leftLabel: UILabel!
-    @IBOutlet weak var rightLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(prescription)
+
         // Do any additional setup after loading the view.
-        if(prescription.count == 2)
-        {
-            leftLabel.text = prescription[0]
-            rightLabel.text = prescription[1]
-        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,19 +21,27 @@ class ResultsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func resetButtonPressed(_ sender: Any) {
-        self.performSegue(withIdentifier: "resetExam", sender: self)
+    @IBAction func buttonVersionPressed(_ sender: Any) {
+        self.performSegue(withIdentifier: "buttonVersionChosen", sender: self)
     }
 
-
-    /*
+    @IBAction func gestureVersionPressed(_ sender: Any) {
+        self.performSegue(withIdentifier: "gestureVersionChosen", sender: self)
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+          let nextController: ExamViewController = segue.destination as! ExamViewController
+        if(segue.identifier == "buttonVersionChosen"){
+            nextController.inputType = "button"
+        } else if (segue.identifier == "gestureVersionChosen"){
+            nextController.inputType = "gesture"
+        }
     }
-    */
+    
 
 }
