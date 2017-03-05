@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Ypc-Ma-3OS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="uni-55-pbt">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,6 +9,70 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Selection View Controller-->
+        <scene sceneID="yBL-hC-jhf">
+            <objects>
+                <viewController id="uni-55-pbt" customClass="SelectionViewController" customModule="Franklin" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kez-Oa-9go"/>
+                        <viewControllerLayoutGuide type="bottom" id="DjR-DM-CD8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MHT-F2-FMh">
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqL-Hr-u5g">
+                                <rect key="frame" x="61" y="261" width="545" height="94"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="21"/>
+                                <state key="normal" title="Gesture">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="gestureVersionPressed:" destination="uni-55-pbt" eventType="touchUpInside" id="dwN-1f-j35"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AAl-zb-Tpq">
+                                <rect key="frame" x="61" y="149" width="545" height="94"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="21"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonVersionPressed:" destination="uni-55-pbt" eventType="touchUpInside" id="UjA-Bn-d9R"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Franklin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqs-fm-vih">
+                                <rect key="frame" x="272" y="38" width="123" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Avenir-HeavyOblique" family="Avenir" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="choose your form of input" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WlM-Qj-C4h">
+                                <rect key="frame" x="218" y="96" width="232" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Avenir-BookOblique" family="Avenir" pointSize="19"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="667" height="375"/>
+                    <connections>
+                        <segue destination="Ypc-Ma-3OS" kind="presentation" identifier="gestureVersionChosen" id="gRI-gI-NPa"/>
+                        <segue destination="Ypc-Ma-3OS" kind="presentation" identifier="buttonVersionChosen" id="V3y-Kb-Pgj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SX3-gX-P1R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-852" y="-9.4452773613193415"/>
+        </scene>
         <!--Exam View Controller-->
         <scene sceneID="ZkJ-c7-2Rh">
             <objects>
@@ -127,7 +191,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TD7-KY-kq1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="520.79999999999995" y="-9.4452773613193415"/>
+            <point key="canvasLocation" x="428" y="289"/>
         </scene>
         <!--Eye Cover Instruction View Controller-->
         <scene sceneID="RWB-kN-I7D">
@@ -210,7 +274,7 @@ Now Testing Right Eye</string>
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="resetPressed:" destination="llM-Cz-uZK" eventType="touchUpInside" id="wPu-4u-0FW"/>
+                                    <action selector="resetButtonPressed:" destination="llM-Cz-uZK" eventType="touchUpInside" id="g5b-Vr-YZT"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Left" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EQx-uB-xuc">
@@ -235,7 +299,7 @@ Now Testing Right Eye</string>
                     <connections>
                         <outlet property="leftLabel" destination="cqf-rX-8qc" id="j2a-v4-wtq"/>
                         <outlet property="rightLabel" destination="Ue8-ye-zBS" id="2e1-RH-mru"/>
-                        <segue destination="Ypc-Ma-3OS" kind="presentation" identifier="resetExam" id="pqZ-5G-wJV"/>
+                        <segue destination="uni-55-pbt" kind="presentation" identifier="resetExam" id="jdM-L7-0m5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l1K-kv-QoD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -247,6 +311,6 @@ Now Testing Right Eye</string>
         <image name="c" width="47" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dUv-pW-a2l"/>
+        <segue reference="V3y-Kb-Pgj"/>
     </inferredMetricsTieBreakers>
 </document>

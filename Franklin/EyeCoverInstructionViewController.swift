@@ -13,6 +13,7 @@ class EyeCoverInstructionViewController: UIViewController {
     var rightDone: Bool?
     var leftDone: Bool?
     var prescription: [String] = [String]()
+    var inputType: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +41,7 @@ class EyeCoverInstructionViewController: UIViewController {
         // Pass the selected object to the new view controller.
         let nextController: ExamViewController = segue.destination as! ExamViewController
         nextController.prescription = self.prescription
+        nextController.inputType = self.inputType
         nextController.rightDone = self.rightDone
         nextController.leftDone = self.leftDone
     }

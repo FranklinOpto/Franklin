@@ -13,7 +13,7 @@ class ExamViewController: UIViewController, UIGestureRecognizerDelegate {
     var rightDone: Bool?
     var leftDone: Bool?
     var prescription: [String] = [String]()
-    var inputType: String = "gesture"
+    var inputType: String?
 //    var prescriptionToSend: [String] = [String]()
     
     // MARK: Exam Prescription Constants
@@ -235,6 +235,7 @@ class ExamViewController: UIViewController, UIGestureRecognizerDelegate {
             let nextController: EyeCoverInstructionViewController = segue.destination as! EyeCoverInstructionViewController
             nextController.leftDone = true
             nextController.rightDone = self.rightDone
+            nextController.inputType = self.inputType
             nextController.prescription.append(prescriptionConversion[eyeValue]!)
         } else if(segue.identifier == "showPrescription") {
             let nextController: ResultsViewController = segue.destination as! ResultsViewController
