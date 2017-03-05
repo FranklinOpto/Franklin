@@ -178,6 +178,7 @@ class ExamViewController: UIViewController, UIGestureRecognizerDelegate {
             currentCorrectAngle = rotateScale
         } else {
             print("Index moved out of available range")
+            index -= 1
         }
     }
     
