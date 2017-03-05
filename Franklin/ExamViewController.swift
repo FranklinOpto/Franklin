@@ -100,26 +100,21 @@ class ExamViewController: UIViewController, UIGestureRecognizerDelegate {
     
     func handleTaps(sender: UISwipeGestureRecognizer){
         self.unsureButtonPressed(Any)
-        directionLabelChange(message: "Unsure")
     }
     
     func handleSwipes(sender: UISwipeGestureRecognizer){
         if let swipeGesture = sender as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
             case UISwipeGestureRecognizerDirection.right:
-                directionLabelChange(message: "Right")
                 print("Swiped right")
                 self.rightButtonPressed(Any)
             case UISwipeGestureRecognizerDirection.down:
-                directionLabelChange(message: "Down")
                 print("Swiped down")
                 self.downButtonPressed(Any)
             case UISwipeGestureRecognizerDirection.left:
-                directionLabelChange(message: "Left")
                 print("Swiped left")
                 self.leftButtonPressed(Any)
             case UISwipeGestureRecognizerDirection.up:
-                directionLabelChange(message: "Up")
                 print("Swiped up")
                 self.upButtonPressed(Any)
             default:
@@ -140,26 +135,31 @@ class ExamViewController: UIViewController, UIGestureRecognizerDelegate {
     // MARK: - Button Events
     
     @IBAction func downButtonPressed(_ sender: Any) {
+        directionLabelChange(message: "Down")
         userResponses.append(0)
         checkResponse()
     }
     
     @IBAction func leftButtonPressed(_ sender: Any) {
+        directionLabelChange(message: "Left")
         userResponses.append(1)
         checkResponse()
     }
 
     @IBAction func upButtonPressed(_ sender: Any) {
+        directionLabelChange(message: "Up")
         userResponses.append(2)
         checkResponse()
     }
 
     @IBAction func rightButtonPressed(_ sender: Any) {
+        directionLabelChange(message: "Right")
         userResponses.append(3)
         checkResponse()
     }
     
     @IBAction func unsureButtonPressed(_ sender: Any) {
+        directionLabelChange(message: "Unsure")
         userResponses.append(-1)
         checkResponse()
     }
