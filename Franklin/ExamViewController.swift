@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ExamViewController: UIViewController, UIGestureRecognizerDelegate {
+class ExamViewController: UIViewController, UIGestureRecognizerDelegate, InputManagerDelegate {
     
     var rightDone: Bool?
     var leftDone: Bool?
@@ -46,6 +46,9 @@ class ExamViewController: UIViewController, UIGestureRecognizerDelegate {
     var correctResponseStreak : Int = 0
     var currentCorrectAngle : Int?
     var matchPoint : Bool = false
+    let isListeningText = "I'm Listening..."
+    let notListeningText = "Not Listening..."
+    var isListening: Bool = false
     
     // MARK: IB Outlets
     @IBOutlet weak var landoltC: UIImageView!
@@ -59,28 +62,17 @@ class ExamViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var examView: UIView!
     @IBOutlet weak var buttonView: UIView!
     @IBOutlet weak var directionLabel: UILabel!
+    @IBOutlet weak var isListeningLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         if(inputType == "gesture"){
-            upButton.isHidden = true
-            downButton.isHidden = true
-            rightButton.isHidden = true
-            leftButton.isHidden = true
-            unsureButton.isHidden = true
-            
-            let tap = UITapGestureRecognizer(target: self, action: #selector(handleTaps))
-            tap.delegate = self
-            buttonView.addGestureRecognizer(tap)
-            let directions: [UISwipeGestureRecognizerDirection] = [.right, .left, .up, .down]
-            for direction in directions {
-                let userInputGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes))
-                userInputGesture.direction = direction
-                buttonView.addGestureRecognizer(userInputGesture)
-            }
+            configureForGesture()
         } else if (inputType == "button"){
-            directionLabel.text = ""
+            configureForButton()
+        } else if (inputType == "voice") {
+            configureForVoice()
         }
         
         if(leftDone != true){
@@ -88,8 +80,10 @@ class ExamViewController: UIViewController, UIGestureRecognizerDelegate {
             examView.transform = CGAffineTransform(translationX: -(examView.frame.width + 7), y: 0)
         }
         
+        // Clear direction label text
         directionLabel.text = ""
-        // Do any additional setup after loading the view.
+        
+        // Update image for first test
         updateImage()
     }
 
@@ -98,8 +92,48 @@ class ExamViewController: UIViewController, UIGestureRecognizerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    func hideButtons() {
+        upButton.isHidden = true
+        downButton.isHidden = true
+        rightButton.isHidden = true
+        leftButton.isHidden = true
+        unsureButton.isHidden = true
+    }
+    
+    func hideVoiceStuff() {
+        isListeningLabel.isHidden = true
+        self.isListening = false
+    }
+    
+    func configureForGesture() {
+        hideButtons()
+        hideVoiceStuff()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTaps))
+        tap.delegate = self
+        buttonView.addGestureRecognizer(tap)
+        let directions: [UISwipeGestureRecognizerDirection] = [.right, .left, .up, .down]
+        for direction in directions {
+            let userInputGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes))
+            userInputGesture.direction = direction
+            buttonView.addGestureRecognizer(userInputGesture)
+        }
+    }
+    
+    func configureForButton() {
+        hideVoiceStuff()
+    }
+    
+    func configureForVoice() {
+        // Configure view for voice input
+        hideButtons()
+        isListeningLabel.isHidden = false
+        self.isListening = false
+        isListeningLabel.text = self.notListeningText
+        SpeechManager.sharedInstance.requestMicAccess()
+    }
     func handleTaps(sender: UISwipeGestureRecognizer){
-        self.unsureButtonPressed(Any)
+        self.unsureButtonPressed(Any.self)
     }
     
     func handleSwipes(sender: UISwipeGestureRecognizer){
@@ -107,16 +141,16 @@ class ExamViewController: UIViewController, UIGestureRecognizerDelegate {
             switch swipeGesture.direction {
             case UISwipeGestureRecognizerDirection.right:
                 print("Swiped right")
-                self.rightButtonPressed(Any)
+                self.rightButtonPressed(Any.self)
             case UISwipeGestureRecognizerDirection.down:
                 print("Swiped down")
-                self.downButtonPressed(Any)
+                self.downButtonPressed(Any.self)
             case UISwipeGestureRecognizerDirection.left:
                 print("Swiped left")
-                self.leftButtonPressed(Any)
+                self.leftButtonPressed(Any.self)
             case UISwipeGestureRecognizerDirection.up:
                 print("Swiped up")
-                self.upButtonPressed(Any)
+                self.upButtonPressed(Any.self)
             default:
                 break
             }
@@ -180,6 +214,15 @@ class ExamViewController: UIViewController, UIGestureRecognizerDelegate {
             print("Index moved out of available range")
             index -= 1
         }
+        
+        // Begin listening for next image
+        // TODO: Takashi: Is this the corect spot? What happens in the above else statement exactly?
+        if (!isListening) {
+            if (inputType == "voice") {
+                SpeechManager.sharedInstance.startRecordingSesion()
+                isListening = true
+            }
+        }
     }
     
     func checkResponse(){
@@ -222,6 +265,36 @@ class ExamViewController: UIViewController, UIGestureRecognizerDelegate {
             self.performSegue(withIdentifier: "showPrescription", sender: self)
         }
         
+    }
+    
+    // MARK: - InputManagerDelegate
+    func left(){
+        self.leftButtonPressed(Any.self)
+        
+    }
+    func right() {
+        self.rightButtonPressed(Any.self)
+        
+    }
+    func down() {
+        self.downButtonPressed(Any.self)
+        
+    }
+    func up() {
+        self.upButtonPressed(Any.self)
+    }
+    func unsure() {
+        self.unsureButtonPressed(Any.self)
+    }
+    
+    func setIsReadyForInput(isReady: Bool) {
+        isListening = isReady
+        
+        if isListening {
+            self.isListeningLabel.text = isListeningText
+        } else {
+            self.isListeningLabel.text = notListeningText
+        }
     }
 
     // MARK: - Navigation

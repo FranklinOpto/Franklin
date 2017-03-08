@@ -29,17 +29,25 @@ class SelectionViewController: UIViewController {
         self.performSegue(withIdentifier: "gestureVersionChosen", sender: self)
     }
     
+    @IBAction func voiceVersionPressed(_ sender: Any) {
+        self.performSegue(withIdentifier: "voiceVersionChosen", sender: self)
+    }
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-          let nextController: ExamViewController = segue.destination as! ExamViewController
+        let nextController: ExamViewController = segue.destination as! ExamViewController
         if(segue.identifier == "buttonVersionChosen"){
             nextController.inputType = "button"
         } else if (segue.identifier == "gestureVersionChosen"){
             nextController.inputType = "gesture"
+        } else if (segue.identifier == "voiceVersionChosen"){
+            nextController.inputType = "voice"
+            
+            // Set the delegate on the singleton SpeechManager
+            SpeechManager.sharedInstance.inputDelegate = nextController
         }
     }
     

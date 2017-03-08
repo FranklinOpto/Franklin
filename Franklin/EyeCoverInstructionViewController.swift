@@ -44,6 +44,9 @@ class EyeCoverInstructionViewController: UIViewController {
         nextController.inputType = self.inputType
         nextController.rightDone = self.rightDone
         nextController.leftDone = self.leftDone
+        
+        // Set the delegate on the singleton SpeechManager
+        SpeechManager.sharedInstance.inputDelegate = nextController
     }
     
 
