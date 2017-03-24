@@ -202,7 +202,7 @@
 				TargetAttributes = {
 					ED63FE6D1E649C3800467D7B = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 4XRLFC3F88;
+						DevelopmentTeam = 53T6WGJL5K;
 						ProvisioningStyle = Automatic;
 					};
 					ED63FE811E649C3800467D7B = {
@@ -425,10 +425,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 4XRLFC3F88;
+				DEVELOPMENT_TEAM = 53T6WGJL5K;
 				INFOPLIST_FILE = Franklin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.franklin.franklin-hci";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.franklin.franklin-hci1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -438,10 +438,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 4XRLFC3F88;
+				DEVELOPMENT_TEAM = 53T6WGJL5K;
 				INFOPLIST_FILE = Franklin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.franklin.franklin-hci";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.franklin.franklin-hci1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

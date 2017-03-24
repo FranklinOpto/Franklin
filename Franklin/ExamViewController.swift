@@ -219,7 +219,8 @@ class ExamViewController: UIViewController, UIGestureRecognizerDelegate {
         if(leftDone == nil){
             self.performSegue(withIdentifier: "performNextEye", sender: self)
         } else if (leftDone == true) {
-            self.performSegue(withIdentifier: "showPrescription", sender: self)
+//            self.performSegue(withIdentifier: "showPrescription", sender: self)
+            self.performSegue(withIdentifier: "mainMenu", sender: self)
         }
         
     }
