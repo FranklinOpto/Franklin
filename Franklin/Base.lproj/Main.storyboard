@@ -267,6 +267,7 @@
                         <outlet property="upButton" destination="ok9-CR-kXF" id="nkF-Wl-NFT"/>
                         <segue destination="x0r-hZ-dAW" kind="presentation" identifier="performNextEye" id="uL2-h6-dSO"/>
                         <segue destination="llM-Cz-uZK" kind="presentation" identifier="showPrescription" id="KZG-aX-fsm"/>
+                        <segue destination="uni-55-pbt" kind="show" identifier="mainMenu" id="Idg-hS-WwZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TD7-KY-kq1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -384,7 +385,7 @@ Now Testing Right Eye</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l1K-kv-QoD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1824.8" y="98.50074962518741"/>
+            <point key="canvasLocation" x="1836" y="-114"/>
         </scene>
     </scenes>
     <resources>
@@ -392,5 +393,7 @@ Now Testing Right Eye</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Piu-xX-Gm1"/>
+        <segue reference="V3y-Kb-Pgj"/>
+        <segue reference="jdM-L7-0m5"/>
     </inferredMetricsTieBreakers>
 </document>
