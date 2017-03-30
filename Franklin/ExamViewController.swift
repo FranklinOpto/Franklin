@@ -318,5 +318,11 @@ class ExamViewController: UIViewController, UIGestureRecognizerDelegate, InputMa
             nextController.prescription.append(prescriptionConversion[eyeValue]!)
         }
     }
+  
+  @IBAction func quitButtonPressed(_ sender: Any) {
+    print("Going back to main menu")
+    self.performSegue(withIdentifier: "mainMenu", sender: self)
+  }
+  
 
 }

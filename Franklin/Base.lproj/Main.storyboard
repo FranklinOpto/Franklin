@@ -222,6 +222,15 @@
                                             <action selector="unsureButtonPressed:" destination="Ypc-Ma-3OS" eventType="touchUpInside" id="iOV-Fc-aRj"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BQI-LO-mZo">
+                                        <rect key="frame" x="291.66666666666669" y="4" width="30" height="30"/>
+                                        <state key="normal" title="Quit">
+                                            <color key="titleColor" red="0.94011690432535355" green="1" blue="0.97645191464491021" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="quitButtonPressed:" destination="Ypc-Ma-3OS" eventType="touchUpInside" id="QyT-TT-5UG"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -229,9 +238,11 @@
                                     <constraint firstItem="ok9-CR-kXF" firstAttribute="top" secondItem="8M1-aB-gry" secondAttribute="top" id="99N-J9-9iO"/>
                                     <constraint firstItem="ok9-CR-kXF" firstAttribute="centerX" secondItem="8M1-aB-gry" secondAttribute="centerX" id="Dsf-4q-8vd"/>
                                     <constraint firstItem="Pnh-uY-REG" firstAttribute="leading" secondItem="8M1-aB-gry" secondAttribute="leading" constant="8" id="PL0-sZ-8co"/>
+                                    <constraint firstItem="BQI-LO-mZo" firstAttribute="top" secondItem="8M1-aB-gry" secondAttribute="top" constant="4" id="Wex-eu-7gW"/>
                                     <constraint firstItem="50Y-le-y6M" firstAttribute="centerX" secondItem="8M1-aB-gry" secondAttribute="centerX" id="XIL-to-FAc"/>
                                     <constraint firstItem="jUK-LX-G2x" firstAttribute="centerX" secondItem="8M1-aB-gry" secondAttribute="centerX" id="ZHg-Dt-Zwc"/>
                                     <constraint firstItem="0GJ-xc-U4J" firstAttribute="centerX" secondItem="8M1-aB-gry" secondAttribute="centerX" id="cOi-eH-kqr"/>
+                                    <constraint firstAttribute="trailing" secondItem="BQI-LO-mZo" secondAttribute="trailing" constant="12" id="g9f-1J-u6f"/>
                                     <constraint firstItem="dEL-6q-keE" firstAttribute="centerY" secondItem="8M1-aB-gry" secondAttribute="centerY" id="lVP-lG-o1P"/>
                                     <constraint firstItem="50Y-le-y6M" firstAttribute="centerY" secondItem="8M1-aB-gry" secondAttribute="centerY" id="m5h-84-ynq"/>
                                     <constraint firstAttribute="bottom" secondItem="0GJ-xc-U4J" secondAttribute="bottom" id="qQb-AK-zPD"/>
@@ -272,7 +283,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TD7-KY-kq1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="289" y="-2"/>
+            <point key="canvasLocation" x="296" y="-8"/>
         </scene>
         <!--Eye Cover Instruction View Controller-->
         <scene sceneID="RWB-kN-I7D">
@@ -392,8 +403,7 @@ Now Testing Right Eye</string>
         <image name="c" width="31" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Piu-xX-Gm1"/>
         <segue reference="V3y-Kb-Pgj"/>
-        <segue reference="jdM-L7-0m5"/>
+        <segue reference="Idg-hS-WwZ"/>
     </inferredMetricsTieBreakers>
 </document>
