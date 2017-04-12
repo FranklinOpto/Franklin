@@ -125,8 +125,8 @@
                                         <rect key="frame" x="151.33333333333331" y="172.66666666666666" width="31" height="29"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yy7-eR-dgY">
-                                        <rect key="frame" x="139" y="335.66666666666674" width="55.999999999999943" height="31.333333333333314"/>
-                                        <fontDescription key="fontDescription" name="Avenir-BookOblique" family="Avenir" pointSize="23"/>
+                                        <rect key="frame" x="106.33333333333331" y="298.66666666666674" width="121.33333333333337" height="68.333333333333314"/>
+                                        <fontDescription key="fontDescription" name="Avenir-BookOblique" family="Avenir" pointSize="50"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>

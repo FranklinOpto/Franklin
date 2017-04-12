@@ -169,31 +169,31 @@ class ExamViewController: UIViewController, UIGestureRecognizerDelegate, InputMa
     // MARK: - Button Events
     
     @IBAction func downButtonPressed(_ sender: Any) {
-        directionLabelChange(message: "Down")
+        directionLabelChange(message: "⬇️")
         userResponses.append(0)
         checkResponse()
     }
     
     @IBAction func leftButtonPressed(_ sender: Any) {
-        directionLabelChange(message: "Left")
+        directionLabelChange(message: "⬅️")
         userResponses.append(1)
         checkResponse()
     }
 
     @IBAction func upButtonPressed(_ sender: Any) {
-        directionLabelChange(message: "Up")
+        directionLabelChange(message: "⬆️")
         userResponses.append(2)
         checkResponse()
     }
 
     @IBAction func rightButtonPressed(_ sender: Any) {
-        directionLabelChange(message: "Right")
+        directionLabelChange(message: "➡️")
         userResponses.append(3)
         checkResponse()
     }
     
     @IBAction func unsureButtonPressed(_ sender: Any) {
-        directionLabelChange(message: "Unsure")
+        directionLabelChange(message: "❓")
         userResponses.append(-1)
         checkResponse()
     }
